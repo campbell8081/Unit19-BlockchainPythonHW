@@ -25,3 +25,8 @@ from constants import *
 mnemonic = os.getenv('MNEMONIC', 'annual police carpet session length teach fee derive shoe sniff outdoor always field win shell')
 print(mnemonic)
 
+# Deriving the wallet keys
+def derive_wallets(mnemonic, coin, numderive):
+    """Use the subprocess library to call the php file script from Python"""
+    command = f'php ./hd-wallet-derive/hd-wallet-derive.php -g --mnemonic="{mnemonic}" --numderive="{numderive}" --coin="{coin}" --format=json'
+    
