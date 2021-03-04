@@ -1,10 +1,8 @@
 import subprocess
 import json
 import os
-
 from dotenv import load_dotenv
-
-from bit import key, PrivateKey, PrivateKeyTestnet
+from bit import Key, PrivateKey, PrivateKeyTestnet
 from bit.network from NetworkAPI
 from bit import *
 from web3 import Web3
@@ -22,11 +20,9 @@ print(keys)
 
 from constants import *
 
-mnemonic = os.getenv('MNEMONIC', 'annual police carpet session length teach fee derive shoe sniff outdoor always field win shell')
-print(mnemonic)
 
 # Deriving the wallet keys
 def derive_wallets(mnemonic, coin, numderive):
     """Use the subprocess library to call the php file script from Python"""
     command = f'php ./hd-wallet-derive/hd-wallet-derive.php -g --mnemonic="{mnemonic}" --numderive="{numderive}" --coin="{coin}" --format=json'
-    
+
