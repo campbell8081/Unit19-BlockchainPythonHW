@@ -2,15 +2,15 @@
 import subprocess
 import json
 import os
+from constants import *
 from dotenv import load_dotenv
 from bit import Key, PrivateKey, PrivateKeyTestnet
 from bit.network import NetworkAPI
 from bit import *
 from web3 import Web3
 from eth_account import Account
-from constants import *
 
-
+# Connect Web3
 w3 = Web3(Web3.HTTPProvider("http://127.0.0.1.8545"))
 
 load_dotenv
@@ -20,6 +20,8 @@ command = './derive -g --mnemonic="INSERT HERE" --cols=path,address,privkey,pubk
 p = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
 output, err = p.communicate()
 p_status = p.wait()
+
+mnemonic = os.getenv('MNEMONIC')
 
 # Deriving Wallet keys
 def derive_wallets(mnemonic, coin, numderive):
